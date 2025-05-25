@@ -1,0 +1,46 @@
+find <source_directory> -name "*.log" -mtime +14
+
+source_directory
+find the files
+delete the files
+
+14 days old  log files can be zipped and placed into destination directory...storage team usually monitors the destination directory if they find any files there they move to another server
+
+source_directory
+destination_directory
+
+need to check source_directory directory exist or not
+destination directory also should be checked
+
+find the files
+zip the files
+move to destination directory
+then remove the files in source_directory
+
+sh backup.sh <source-directory>  <destination_directory> <days>
+
+app-logs-$TIMESTAMP.zip
+
+crontab --> scheduling the scripts in linux --> usually non business hours at 3 or 4AM
+
+* * * * * sudo sh /home/ec2-user/shell-practice/20-backup.sh /home/ec2-user/source-dir /home/ec2-user/dest-dir
+
+send email/gmail from linux
+===========================
+we have few mail comands
+
+/app-logs --> application continously writing log files
+
+12ki new cart.log will be created
+cart-23-05-2025.log
+df -hT --> every 30min --> send email if usage is more than 70%
+
+mlfhlchsfxeiqrax
+
+{
+echo "To: info@joindevops.com"
+echo "Subject: Testing Gmail"
+echo "Content-Type: text/html"
+echo ""
+echo "Testing Gmail Body"
+} | msmtp "info@joindevops.com"
