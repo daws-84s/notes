@@ -22,14 +22,14 @@ logfile        /var/log/msmtp.log
 account        gmail
 host           smtp.gmail.com
 port           587
-from           m.sivakmrreddy@gmail.com
-user           m.sivakmrreddy@gmail.com
-password       prvdcsgxrbzjghyq
+from           your_from_email@gmail.com
+user           your_from_email@gmail.com
+password       app-password
 
 account default : gmail
 
 {
-echo "To: info@joindevops.com"
+echo "To: <your-to-email>"
 echo "Subject: Test Email"
 echo "Content-Type: text/html"
 echo ""
