@@ -1,0 +1,88 @@
+/home/ec2-user/.local/bin
+:/home/ec2-user/bin:
+/usr/local/bin
+:/usr/bin
+:/usr/local/sbin
+:/usr/sbin
+
+Crontab
+========
+/usr/bin:/bin
+
+recently I was given a script to create backup of the files, I successfully created the script and shceduled in crontab, but command not found in crontab. When I executed it is working fine manually. Later I understood PATH is bare minimum in crontab so I changed my script as command into /usr/bin directory. It started working fine..
+
+prvd csgx rbzj ghyq
+
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-bundle.crt
+logfile        /var/log/msmtp.log
+
+account        gmail
+host           smtp.gmail.com
+port           587
+from           m.sivakmrreddy@gmail.com
+user           m.sivakmrreddy@gmail.com
+password       prvdcsgxrbzjghyq
+
+account default : gmail
+
+{
+echo "To: info@joindevops.com"
+echo "Subject: Test Email"
+echo "Content-Type: text/html"
+echo ""
+echo "This is test email from Shell scripting session"
+} | msmtp "<your-to-email>"
+
+/var/log is consuming more than 80%
+
+Hi DevOps Team,
+
+There is High Disk Usage alert in the system. Please check
+
+High Disk Usage on /run: 2
+High Disk Usage on /: 30
+High Disk Usage on /var: 22
+High Disk Usage on /var/tmp: 3
+High Disk Usage on /home: 5
+High Disk Usage on /var/log: 4
+High Disk Usage on /boot: 53
+High Disk Usage on /boot/efi: 6
+High Disk Usage on /var/log/audit: 2
+
+Regards,
+Monitoring Team
+
+https://www.onlinewebtoolkit.com/text-to-html
+
+Configuration Management
+========================
+Provision server
+
+system packages install
+programming runtime install
+application folders, users,etc
+download the code
+install dependencies
+create service files
+start the server
+
+deployment
+=======================
+stop the service
+1. remove the old version
+2. download the new version, install dependencies
+3. start the server
+
+disadvantages
+================
+not idempotent
+poor error handling
+if we have more servers, very difficult to run --> not scalable
+scripts works only for specific distro --> homogenous
+syntax is little tough
+password security is poor
+
+Configuration Management Tools --> ansible, chef, rundeck, puppet, etc...
