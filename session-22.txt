@@ -1,0 +1,160 @@
+Coding
+	variables
+	data types
+	conditions
+	loops
+	functions
+	error handling
+
+how do you call shell script
+./script.sh
+
+source ./script.sh
+
+backup script
+disk utilisation
+cpu/memory utilisation
+crontab
+
+no error handling
+if more servers, difficult to handle...not scalable
+homogenous
+syntax is little tough to understand
+password security is not available
+not idempotent
+
+configuration management
+========================
+it is provisioning the server for hosting the application...
+system packages
+programming langugage
+folder, user creation, etc
+download the code
+install dependencies
+create systemctl services
+start the service/server
+
+push vs pull
+=======================
+
+US -> India
+
+Fedx shop
+
+HYD
+1. go to fedx daily
+2. check whether you got letter or not
+
+pull/poll model
+=====================
+1. time waste
+2. petrol waste
+3. resource waste
+4. increasing traffic on roads
+
+push model
+=====================
+HOME
+1. whenever letter receive in local fedx shop
+2. delivery boy delivers the letter to us
+
+SYSTEM-1 --> SYSTEM-2
+
+chef --> pull based configuration management server
+
+1. ssh connection
+2. create the file with content
+3. closed the connection
+
+Ansible takes remote login using SSH protocol to the nodes
+It will do the task
+come out of the server
+
+Linux Command == Ansible Module/Collection
+
+<command> <options> <inputs>
+
+ls
+ls -l
+ls -lrt
+
+cp <source-dir> <dest-dir>
+
+ansible all -i IP, -e ansible_user=ec2-user -e ansible_password=DevOps321 -m ping
+
+Shell Script == Ansible Playbook
+
+YAML --> Yet another markup langugage
+.yml or .yaml
+
+Bank
+===========
+white paper to deposit
+
+acc no, date, branch, name, money, denomination, sign
+
+forms/templates
+
+Date
+acc_no
+branch
+name
+amount
+denomination
+
+DTO --> XML, JSON
+
+XML --> Extensive Markup language
+
+<Username>sivakumarredy</Username>
+
+<User>
+	<Username>sivakumarredy</Username>
+	<Password>siva123</Password>
+</User>
+
+{
+	"username": "sivakumarredy",
+	"password": "siva123"
+}
+
+What object can do, what object knows. I am trainer
+
+exp, what tools teaching, timings --> properties
+functions --> take sessions, prepare interview questions, take resume sessions
+
+<Student> --> object
+	<Firstname>Sivakumar Reddy</Firstname> --> field
+	<Lastname>M</Lastname>
+	<DOB>2024-01-01</DOB>
+	<Addresses> -->object
+		<PermAddress> -->object
+			<DoorNo>143</DoorNo>
+			<Street>Gandi Nagar</Street>
+		</PermAddress>
+		<CurrentAddress>
+			<DoorNo>143</DoorNo>
+			<Street>Gandi Nagar</Street>
+		</CurrentAddress>
+	</Addresses>
+</Student>
+
+{
+	"firstname": "Sivakumar",
+	"lastname": "M",
+	"dob": "2024-01-01",
+	"addresses": [
+		{
+			"type": "perm",
+			"doorno": "143",
+			"street": "gandi nagar"
+		},
+		{
+			"type": "perm",
+			"doorno": "143",
+			"street": "gandi nagar"
+		}
+	]
+}
+
+
