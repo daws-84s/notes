@@ -1,0 +1,29 @@
+what are ansible adhoc commands?
+it is ansible command line to perform one time tasks or emerfency tasks when we dont have to write playbook and push
+
+what are ansible playbook?
+
+playbook contains list of plays we can execute againts group of remote servers to perfom multiple tasks. playbook is in YAML format
+
+dnf install nginx -y -->  homogeneous
+apt install nginx -y
+
+variables, data types, conditions, loops, error handling, functions
+
+variables hold value, you can use it wherever you want. if you change at one place it will reflected all the places where you are referring, basically DRY principle dont repeat yourself.
+
+inheritance
+=============
+great grand father --> 1000 acres --> grand father --> 100 acres (father) --> father 10 acres --> son 1 acre --> Our son 100 acres
+
+1. define same variable in all possible locations
+2. run the playbook
+3. comment when you understand the preference
+
+data types
+==============
+int, float, double, decimal, long, char, string, boolean, list, map, etc.
+
+Conditions
+==============
+when
