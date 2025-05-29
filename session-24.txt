@@ -1,0 +1,54 @@
+facts == variables
+
+packaga
+1. gather facts about target servers
+2. if os_family is redht it will run dnf state name  -y
+3. if os_family is debain it will run apt state name -y
+
+loops
+============
+for i in {1..100}
+do
+	echo $i
+done
+
+loop:
+-
+- 
+
+functions == filters
+================
+command-1 | command-2
+
+Ramesh, Suresh, Raheem, Joseph --> String
+
+, --> delimiting
+
+Ramesh
+Suresh
+Raheem
+Joseph
+
+255.255.255.255
+
+300.567.980.789
+
+if there are no modules available
+1. develop your module
+2. use shell or command module
+
+shell vs command
+
+you are in your house
+----------------------
+1. I will enter into your home and call you
+	problems: security issue, you are seeing everything inside house
+	shell module --> if you are using shell module, you are logging inside the server and running the tasks. redirections, variables, pipes, etc will work here
+2. I will stay outside and call you
+	problem: you don't get any access to things inside
+	command module --> executing command from outside. you will get linux full environment
+	redirections, piping and env variables will not work here
+	
+VARIABLE=$(command)
+
+register
