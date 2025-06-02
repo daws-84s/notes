@@ -1,0 +1,7 @@
+nohup <command> &
+& --> runs in background, but if terminal closes command will be terminated
+nohup <command> & --> runs in background even terminal is closed
+
+1. check you can connect to mysql using app user
+if yes then it means data is already imported
+if no, not imported we can use import
