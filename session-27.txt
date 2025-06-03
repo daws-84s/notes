@@ -1,0 +1,44 @@
+Ansible Roles
+===============
+DRY
+	Variables
+	Functions
+
+create system user
+install programming language
+download code
+create directory
+unzip code
+install dependencies
+create systemctl service
+start the service
+
+Roles is a proper directory structure to write ansible playbooks, we can reuse roles. it will have tasks, vars, templates, files, handlers, etc.
+
+{"changed": false, "msg": "Could not find or access 'mongo.repo'\nSearched in:\n\t/home/ec2-user/ansible-roboshop-roles/roles/mongodb/files/mongo.repo\n\t/home/ec2-user/ansible-roboshop-roles/roles/mongodb/mongo.repo\n\t/home/ec2-user/ansible-roboshop-roles/roles/mongodb/tasks/files/mongo.repo\n\t/home/ec2-user/ansible-roboshop-roles/roles/mongodb/tasks/mongo.repo\n\t/home/ec2-user/ansible-roboshop-roles/files/mongo.repo\n\t/home/ec2-user/ansible-roboshop-roles/mongo.repo on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+
+template --> we can keep some placeholders, you can put the values at run time
+
+file --> content inside a specific file
+
+ansible templates
+=================
+follows jinja2 formatting, we can keep some placeholders, actual values will be provided through variables at runtime.
+
+tasks
+	main.yaml --> playbook related tasks are her
+files
+	<file-name> --> you can keep all the files required here
+templates
+	<template-file> --> we can keep all the templates with placeholders here. usually we follow jinja2 templating, variables values can be supplied
+vars
+	main.yaml --> all variables required for roles can be kept here.
+handlers --> handlers are notifiers in ansible. when there is a change in something if you want to notify other task we can use handlers. for example change in nginx configure can notify restart nginx task in handlers
+	main.yaml
+	
+	
+DB Admin
+==========
+1. App team requests DB admin team to create schema
+2. DB team will create a seperate shipping user and handover that to app team.
+3. shipping user will have only access to shipping schema
