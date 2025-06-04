@@ -1,0 +1,49 @@
+Ansible Tags
+=============
+deployment or release new version
+
+announce downtime 6hrs
+---------------------
+stop catalogue service
+remove old code -> I can remove /app directory, create again and download new version code
+download new code
+restart catalogue
+
+We can include other roles using include_role or import_role
+
+include_role --> it will include tasks in run time, it will validate also in run time, it will not pre process.
+
+Tags and when conditions apply only to the include_role statement itself, not the tasks within the role.
+
+import_role --> ansible validate import_role before playbook execution
+Tags and when conditions apply to the imported role and its tasks.
+
+ansible error handling
+======================
+Error handling means what should we do when error comes, what should we do when error not comes.
+
+if we are able to handle the error, we can keep ignore_errors true and then execute another task in case of failure
+
+id roboshop
+	if created already, we are skipping
+	otherwise we are creating
+	
+imagine, there is no user module available
+
+a task executes id roboshop -> task fails if user not available, usually script exit because of this error
+
+another task create user, if rc != 0
+
+vault
+============
+you can create a file and encrypt it..
+
+SSM parameter store
+
+Linux --> Server, Ansible --> Platform
+HashiCorp Vault --> Install, manage, update, upgrade
+
+Linux/ansible integrate with vault softwares
+
+We were using ansible vault, but there are challenges to maintain the passwords and vaut files, so I recently proposed SSM parameter store, I did POC and Removed vault and implemented SSM parameter store successfully...
+
