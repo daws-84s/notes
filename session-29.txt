@@ -1,0 +1,40 @@
+Ansible dynamic inventory
+=========================
+inventory --> static, hosts are fixed
+
+AutoScaling --> when traffic increases, infra also increases. when traffic infra also decreases
+100 servers
+
+ansible queries the ec2 instances based on some criteria...
+
+boto3 and botocore
+
+us-east-1 region
+we need to filter the instances
+	running instances
+	Name --> Frontend
+	
+*.aws_ec2.yml/yaml
+
+forks --> How many number of instances ansible can connected
+
+ansible.cfg
+
+1. ANSIBLE_CONFIG
+2. ansible.cfg in pwd
+3. home directory
+4. etc
+
+Ansible can query the cloud provider to fetch hosts at run time, this will be useful in the autoscaling kind of dynamic environments.
+
+
+Ansible can create aws infra also...
+
+Everything is module/collection. Ansible may require libraries. to connect AWS we need boto3 and botocore. aws configure authentication too..
+
+1. create instances
+2. create r53 records
+
+ec2_output.results
+
+"{{item.instances[0].private_ip_address}}"
