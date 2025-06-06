@@ -1,0 +1,93 @@
+Ansible architecture
+Configuration management
+Variables --> prefernce
+Conditions
+Loops
+Functions or Filters
+Data types
+Developed playbooks
+Roles
+Tags, Dynamic inventory, vault, using SSM parameter store, handlers, include vs import, etc...
+Deployments through Ansible
+
+
+roboshop --> create user --> nodejs
+
+frontend --> HTMl, CSS, JS --> name, email, password
+
+a function in nodejs
+
+addUser(name, email, password){
+	isUserAlreadyExist
+	if not available createUser
+	sendResponseToFrontend
+}
+
+RoboShop Createuser through Ansible
+
+custom modules/collections
+===============
+library/          # roles can also include custom modules
+write python code
+
+myroboshop.createUser
+	name:
+	email:
+	password:
+
+Ansible executes modules/collections on remote server
+
+
+plugins: lookup('amazon.aws_ssm','name', region: '') --> ansible server
+plugins adds extra functionality to ansible server. like lookup, inventory, filter, etc...
+
+myroboshop.addCart
+	product_name:
+	product_id:
+	
+you want to check the price before adding to cart
+
+lookup('roboshop.checkproduct', product_id: '1234')
+
+filter: roboshop-price | roboshopINRprice
+
+ansible is in very poor in state management, for example if someone edits infra manually in console ansible can't detect that it may create duplicate resources if you run again...
+
+ansible is perfect doing configurations with in the server...
+
+manually created infra
+=====================
+time
+errors
+if something goes wrong, tracking is very difficult
+restoring the infra is time taking..
+version control
+
+Infra as a code
+==================
+version control --> versioning of our code, review, history of infra, collobaration
+CRUD --> operations on infra is easy creating, updating, reading and deleting
+consistent infra -> IaaC can setup same infra across all environments, basically working in DEV not working in PROD
+inventory management --> we can check IaaC to understand what are the services we are using
+cost --> switch off the infra in non business hours, switch on again in business hours... we can schedule to stop the servers at 8PM start again at 8AM
+dependency management --> IaaC can understand the dependencies between resources..
+Modules --> we can extend terraform code using modules
+
+terraform init --> 
+
+HCL --> Hashicorp configuration language
+
+{
+	key = value
+}
+
+everything is called as resource
+
+resource "type-of-resource" "name-you-provide" {
+
+	ami_id = 
+	name = 
+	sg_id =
+	instance_type =
+	subnet_id = 
+}
