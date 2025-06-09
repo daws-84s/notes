@@ -1,0 +1,47 @@
+you can issue terraform command where you have .tf files
+
+command-1 | command-2
+
+register: <variable>
+
+if you are creating a resource, it gives us o/p using this we can create other resources.
+
+variables datatypes conditions loops functions error handling
+
+variables
+============
+variables file
+terraform.tfvars --> same filename for terraform to consider
+command line
+env variables TF_VAR_<variable-name>
+
+1. command line
+2. tfvars
+3. env variables
+4. default values
+5. user prompt
+
+Conditions
+==================
+if(expression){
+	these statements if expression is true
+}
+else{
+	these statements if expression is false
+}
+
+expression ? "this value if true" : "this will run if false"
+
+loops
+===================
+1. count based loops
+2. for loops
+3. dynamic block
+
+you can write count of resources you require under the resource definition
+
+interpolation
+=============
+
+1. if you have list, go for count
+2. if you have map or set, go for for each
