@@ -1,0 +1,100 @@
+"${}-hello"
+
+dynamic blocks
+================
+dynamic ingress {
+	for_each = var.ingress_ports
+	content {
+		from_port        = ingress.value["from_port"]
+        to_port          = ingress.value["to_port"]
+        protocol         = "-1"
+        cidr_blocks      = var.cidr_blocks
+        ipv6_cidr_blocks = ["::/0"]
+	}
+}
+
+functions
+===============
+length
+toset
+
+labels == tags
+
+100 bags --> white
+tag --> details
+name = siva
+flight = IN307
+dest = dubai
+
+common_tags
+==============
+Project = roboshop
+Terraform = true
+Version="1.0"
+
+variable tags
+==============
+Component = cart
+Name = cart
+Version = "1.1"
+
+merging merge(common_tags, variable tags)
+=========
+Project = roboshop
+Terraform = true
+Component = cart
+Name = cart
+Version = 1.1
+
+
+data sources
+=================
+variables --> inputs
+outputs --> print the info after creating resources
+
+it can query the info from provider
+
+locals
+=================
+locals can have expressions, you can assign a name to it and use it wherever you require
+
+locals are like variables holding values against keys, but you can refer variables inside locals, expressions, functions..
+
+variables can be overridden, locals can't be overridden
+
+state
+==================
+IaaC --> declarative way of creating infra, whatever you declare IaaC tool should create provided you follow right syntax
+
+.tf files --> desired/declared infra --> expectation
+what exists in AWS --> actual infra --> reality
+
+state files --> terraform use this file to track what it created in provider
+
+terraform plan
+==================
+reads .tf files --> understand what user wants
+read state file --> empty
+query the provider --> already infra exists or not
+
+it starts create
+
+created infra
+
+terraform plan
+reads .tf files, state file --> matched
+
+I deleted instance in console manually
+reads .tf files, state file --> matched
+checks provider to verify desired infra vs actual infra
+
+when you change tf code
+=======================
+.tf files --> understands what user wants
+state file --> not matched
+
+actual infra --> user don't want r53 records.
+
+terraform uses state file to track what it is created in the provider, every time we run terraform commands terraform check whether desired infra is matching actual infra through state file...
+
+keeping state file in local will not work in collobarative environment. terraform does not understand what were the resources created by others, so it may create duplicate resources or else errors
