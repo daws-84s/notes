@@ -1,0 +1,41 @@
+Provisioners
+==============
+when you create the server using terraform, we can take some actions using provisioners
+1. local-exec
+2. remote-exec
+
+where I run terraform command, that is local to terraform
+remote means server I created using terraform
+
+creation time provisioners
+destory time provisioners
+
+multiple infra using terraform
+==============================
+DEV, QA, SIT, UAT, PRE-PROD, PERF, PROD
+
+daws84s.site
+
+roboshop-dev-mongodb
+roboshop-dev-redis
+roboshop-dev-mysql
+roboshop-dev-rabbitmq
+
+roboshop-uat-mongodb
+
+roboshop-prod-mongodb
+
+mongodb-dev.daws84s.site
+mongodb-prod.daws84s.site
+
+dev and prod
+
+pros
+======
+no need to duplicate the code
+consistency
+
+cons
+======
+should be very cautious changes done in DEV may go to PROD also by mistake
+
