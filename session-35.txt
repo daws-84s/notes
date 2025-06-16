@@ -1,0 +1,83 @@
+IaaC advantages
+Variables --> default, terraform.tfvars, command line, ENV variables
+Conditions --> expression ? "true" : "false"
+Loops --> count based loop, for each loop, dynamic block
+Data types --> number, bool, string, list, map
+Functions --> in built functions merge, toset, length, etc.
+Data sources --> query the existing information in provider
+Outputs --> print the o/p information
+Provisioners --> Local exec and Remote exec
+Locals --> assign expressions/functions to a variable and use it wherever required
+state and remote state --> S3 with locking
+Multiple environments
+	tfvars
+	terraform workspaces
+	
+terraform workspace 
+terraform workspace create dev --> it will create a folder in s3 bucket env: -> dev folder
+terraform workspace select dev
+
+terraform.workspace --> dev/prod
+
+roboshop-infra-dev
+roboshop-infra-prod
+
+cons
+==========
+duplicate code
+
+pros
+==========
+clear isolation between dev and prod
+mistakes in dev not goes to prod
+
+
+terraform modules
+===================
+DRY --> variables, common functions, ansible roles, etc.
+
+Module --> is a common code
+Project --> pass variables which are mandatory
+
+Small projects --> DevOps engineers develop modules, use modules
+Big projects --> sep team called platform engineering, they develop modules. individual project devops engineers use these modules
+
+naming conventions
+===================
+
+humans --> terraform-module or terraform_module
+use hyphens where names are seen by humans
+
+programs --> _ resource names, data source names, etc..
+
+uses
+==========
+1. centralised code. reuse
+2. enforcing standards through modules
+3. changes at one place can be cascaded to all
+4. easy maintance and updates
+
+
+VPC --> virtual private cloud
+=============================
+
+On Premise
+============
+physical space
+Power
+Network
+AC
+Physical secuirty
+Buy Server
+Install operating system
+Configure networking
+
+Data center == VPC
+an isolated space where we can create project resources and control them
+
+
+Create VPC
+Create internet gateway
+Create subnets --> public, private, databases
+
+

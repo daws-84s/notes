@@ -1,0 +1,21 @@
+terraform init -backend-config=dev/backend.tf
+terraform plan -var-file=dev/dev.tfvars
+terraform apply -var-file=dev/dev.tfvars -auto-approve
+terraform destroy -var-file=dev/dev.tfvars -auto-approve
+
+terraform init -reconfigure -backend=config=prod/backend.tf
+
+workspaces
+=============
+terraform workspace
+
+terraform.workspace = dev/prod
+
+lookup(map, key) -> dev
+lookup(map, qa, "t3.micro")
+
+terraform workspace select prod
+
+data "aws_instance" "foo" {
+  instance_id = "i-instanceid"
+}
