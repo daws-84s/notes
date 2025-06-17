@@ -1,0 +1,109 @@
+terraform-aws-instance
+	resources
+	variables
+	outputs
+	data sources
+	functions
+	locals
+	readme.md
+	
+roboshop-ec2
+
+module "roboshop" {
+	source = "../terraform-aws-instance"
+	# mandatory variable values should be supplied
+	var-name = value
+	# you can also override default variables
+}
+
+output "instance_id"{
+	module.roboshop.instance_id # you will get instance_id as output
+}
+
+Entrance --> Village --> Streets --> Roads 
+IGW            VPC		  Subnets	  Routes
+
+SYS1 -> SYS2 (Small network)
+
+pincode --> 500082
+VPC -> CIDR (Classless inter domain routing)
+Subnets --> 25-8-123
+Stree-A --> 25-8
+			25-8-1
+			25-8-2
+			
+			25-8-123
+
+32 bits
+4 octate --> 8
+243.32.45.78
+
+0.0.0.0
+.
+.
+.
+.
+.
+.
+255.255.255.255
+7		  2 1 0
+=		  =	= =
+0 0 0 0 0 0 0 1 --> 1*2^0 => 1
+
+0 0 1 1 1 0 1 0 --> 0*2^0 + 1*2^1 + 1*2^3 + 1*2^4 + 1*2^5
+
+1 1 1 1 1 1 1 1 --> 255
+
+0-9 --> 10
+0-1 --> 2
+
+2^32 --> 1024*1024*1024*4
+4billion IP adres --> 400cr
+
+10.0.0.0/16 --> 16 means network bits
+IP = Network+Host
+
+10.0.0.0
+10.0.0.1
+10.0.0.2
+
+
+10.0.255.255
+2^16 = 1024 * 2^6 --> 65,536
+
+10.0.0.0/20 --> 2^12
+
+HYD --> region
+
+north hyd, south hyd
+
+1 region should have atleast 2 AZ for HA
+
+public-subnet-1a 	--> 10.0.1.0/24 --> 256
+public-subnet-1b 	--> 10.0.2.0/24 --> 256
+private-subnet-1a 	--> 10.0.11.0/24 --> 256
+private-subnet-1b 	--> 10.0.12.0/24 --> 256
+database-subnet-1a 	--> 10.0.21.0/24 --> 256
+database-subnet-1b 	--> 10.0.22.0/24 --> 256
+
+10.0.23.45/32 --> A single IP address
+
+10.0.0.0/16 --> A range of IP address
+
+create VPC
+create IGW
+attach VPC to IGW
+
+create 2 public subnets
+create 2 private subnets
+create 2 database subnets
+
+create public route table
+add internet as route through IGW
+attach to public-1a and public-1b
+
+create private route table
+attach to private-1a and private-1b
+
+create database route table
+attach to database-1a and database-1b
