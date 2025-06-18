@@ -1,0 +1,62 @@
+dnf install mysql-server --> HTTP URL
+
+ec2 public instances on restart public ip changes
+NAT gateway in background is an EC2 instance..
+
+we can request ISP to provide static ip. ipv4 2^32 you will get one...
+
+two villages can communicate
+1. should have diff pincode
+2. roads should be available
+
+two VPC by default can't communicate. if we want we can enable VPC peering.
+
+2nd VPC
+=========
+my account same region
+my account diff region
+
+diff account same region
+diff account diff region
+
+roboshop(10.0.0.0/16) --> default(172.31.0.0/16)
+
+roboshop public --> default VPC
+public RT destination is 172.31.0.0/16
+target peering
+
+default vpc
+destination 10.0.0.0/16
+target peering
+
+
+create VPC
+create IGW
+attach VPC to IGW
+
+create 2 public subnets
+create 2 private subnets
+create 2 database subnets
+
+create public route table
+add internet as route through IGW
+attach to public-1a and public-1b
+
+create private route table
+attach to private-1a and private-1b
+
+create database route table
+attach to database-1a and database-1b
+
+create eip
+create nat gateway with eip
+
+add routes to private and db route table through NAT 0.0.0.0/0
+
+associated public rt with public subnets
+associated private rt with private subnets
+associated database rt with database subnets
+
+peering connection with default VPC
+add routes with destination of default VPC CIDR in roboshop route tables routes
+add routes with roboshop vpc CIDR as destination in default VPC main route table
