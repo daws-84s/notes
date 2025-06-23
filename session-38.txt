@@ -1,0 +1,28 @@
+VPC
+IGW and associate with VPC
+subnets
+eip
+NAT
+route tables
+routes
+subnets and route table associations
+peering
+
+curl 172.31.20.226
+curl 34.228.142.106
+
+10.0.0.0/16	local
+0.0.0.0/0	igw-09d4bcf4d3f510de6
+
+hdfc-vpc, hdfc-sg, hdfc-alb
+
+frontend
+==========
+80 -> http --> public
+443 -> https --> public secure
+22 -> SSH --> login for admins
+
+HYD --> BANG
+10AM
+9AM
+
