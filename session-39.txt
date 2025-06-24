@@ -1,0 +1,69 @@
+1. developed on our own customised modules
+2. open source modules
+
+custom modules
+===============
+pros
+=====
+1. everything is in our control
+
+cons
+=====
+1. we need to write lot of code
+2. we need to maintain
+
+opensource modules
+===============
+pros
+=====
+1. directly use, no need to write and maintain
+
+cons
+=====
+not in our control
+can't fully customise
+need to depend on community
+
+vpc_ids = [
+      "subnet-00817f676e3edf558",
+      "subnet-0839aecc3198c3e99",
+   ]
+
+subnet-00817f676e3edf558, subnet-0839aecc3198c3e99 --> for terrform it is string  --> for AWS it is string list
+
+Delivery Manager --> responsible for project changes delivery
+
+if UI work --> UI team
+if Backend work --> Backend team
+if DB work --> forward to DB team
+
+Load Balancing
+================
+
+team == target group
+team members == ec2 instances
+team lead/DM == load balancer
+rules == rules
+Listeners
+
+if cart.daws84s.site --> cart target group --> cart instance
+
+port no 80 --> http
+http://daws84s.site --> 80
+https://daws84s.site --> 443
+
+Health check
+=============
+http://IP:80 --> 2XX healthy
+
+load balancer checks instances health periodically
+
+every 10 sec, all instances in TG
+
+consecutive 3 health check failure --> unhealthy
+consecutive 3 health check success --> success
+
+timeout: 5sec
+
+LB --> Listener 80 --> Default Rule --> Nginx TG --> either 1 or 2
+
