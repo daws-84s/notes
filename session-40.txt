@@ -1,0 +1,30 @@
+Target group
+Load Balancer
+
+Project Infra --> one time infra --> we will create this first
+Application Infra --> EC2, R53 records, AMI, etc...
+
+Load Balancer, Listener, TargetGroup --> project infra
+
+Load Balancer
+=============
+Backend, so private. http port no 80
+allow port no 80 from bastion IP address
+
+if bastion ip is restarted, ip address changes. we can create elastic ip and attach to bastion host. but it has cost
+
+a sg is attached to bastion host. sg-egf123456
+a sg is attached to load balancer. sg-73hgfsg83
+
+load balancer sg rule
+==================
+port: 80
+IP: sg-egf123456
+
+instances attached with these sg sg-egf123456 are allowed to connect port no 80
+
+OpenVPN Access Server Community Image-8fbe3379-63b6-43e8-87bd-0e93fd7be8f3
+
+vpn default username: openvpnas --> linux username
+
+https://openvpn.net/as-docs/aws-ec2.html#---connect-to-your-new-ami-76631

@@ -1,0 +1,16 @@
+Terraform -> infra creation
+Ansible -> Configuration management
+
+Terraform and Ansible
+
+mongodb_vpn
+22
+27017
+
+1. connect to the instance
+2. copy the script
+3. execute the script
+
+redis -> 6379
+mysql -> 3306
+rabbitmq -> 5672
