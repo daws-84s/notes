@@ -1,0 +1,51 @@
+User --> Human
+Administrator access
+Security Credentials
+
+aws configure
+
+EC2 --> SSM parameter
+
+Roles
+======
+Roles are created non humans
+EC2 --> Create Role
+Attatch permissions to this role
+Attatch Role to EC2
+
+ALB --> Listener --> Rule --> TargetGroup
+
+ALB(Internal) --> Listener(80) --> Fixed response
+
+backend.daws84s.site --> 
+
+catalogue.backend.daws84s.site --> Catalogue target group
+user.backend.daws84s.site --> User target group
+
+*.backend.daws84s.site --> ALB
+
+
+Catalogue
+=========
+team == targetgroup
+
+catalogue_backend_alb --> 8080
+catalogue_vpn --> 22
+catalogue_bastion --> 22
+catalogue_vpn_8080 
+
+mongodb_catalogue --> 27017
+
+I can attach catalogue to target group
+I can take AMI from catalogue instance. I can give it to autoscaling
+
+deployment
+==============
+1. create another catalogue instance
+2. configure it
+3. take AMI
+4. refresh autoscaling
+
+AMI --> Amazon Machine Image
+stop the instance -> take AMI
+
