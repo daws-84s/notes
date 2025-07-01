@@ -1,0 +1,38 @@
+mongodb-dev.daws84s.site
+redis-dev.daws84s.site
+mysql-dev.daws84s.site
+rabbitmq-dev.daws84s.site
+
+stop instance
+take AMI
+delete the instance
+
+JD == Launch template --> name, AMI, SG, Storage, subnet, etc, key_name
+Autoscaling <-- Launch template
+
+launch instances and add to TG
+
+10 instances --> catalogue is running
+Ansible --> connect to 10 instances and run playbook
+
+create new instance
+configure it
+stop it
+take AMI
+delete it
+create launch template
+provide it autoscaling
+	2 new instances with new AMI
+	delete 2 old instances
+	
+	2 new instances with new AMI
+	delete 2 old instances
+add rule to ALB
+
+10 --> 79, 80, 50, 60, etc
+
+79+80+50+60+etc
+----------------
+10
+
+http://catalogue.backend-dev.daws84s.site --> R53 --> ALB
