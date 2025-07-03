@@ -1,0 +1,59 @@
+Create instance
+Configure it with ansible
+Stop the instance
+Take AMI
+Delete the instance
+
+Launch template
+ASG depends on Launch template
+ASG policy --> AVGCPUUtilization
+Listener Rule
+
+scale-in --> delete
+scale-out --> create
+
+terraform-aws-roboshop
+
+How HTTPS works?
+==================
+public key and private key
+
+SYS-1 in India SYS-2 in US
+http --> plain text
+
+http://facebook.com --> man in the middle attack
+
+1. any message encrypted with public key can only be decrypted with private key
+2. any message signed by private key can be verified by someone who have access to public key
+
+public key --> access to everyone
+
+https --> domain
+
+godaddy, aws, azure, --> https vendors
+
+browsers have all popular https vendor public keys...
+
+browsers trust https vendors
+
+1. first we contact vendor
+2. company, address, domain, department, etc...
+3. domain validation
+4. they ask us to put TXT record with their provided key and value and click verify
+5. then they will provide .crt and .key
+
+.crt --> public
+.key --> private
+
+.crt we include with our website
+.key we keep it in private location
+
+facebook.com
+browser --> fdsflhg77+encrypt with crt
+website --> decrypt with private key and send the response to browser
+
+all communications are encrypted
+
+
+
+
