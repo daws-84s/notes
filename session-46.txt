@@ -1,0 +1,22 @@
+1. https://dev.daws84s.site --> dev.daws84s.site
+
+dev.daws84s.site --> frontend ALB
+
+2. HTTPS Listener 443
+
+3. rule is dev.daws84s.site --> frontend target group
+
+4. https://dev.daws84s.site/api/catalogue/categories --> 
+
+http://catalogue.backend-dev.daws84s.site --> backend ALB
+
+HTTP Listener 80
+
+Rule is catalogue.* --> catalogue tg
+
+1. check sg
+2. variables in ansible roles, nginx.conf
+3. listener rule
+4. targets are healthy or not
+5. db url
+

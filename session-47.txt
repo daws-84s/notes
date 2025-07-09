@@ -1,0 +1,36 @@
+CDN --> Cloudfront
+
+AWS Cache network --> speed delivery
+
+static content --> images and videos
+dynamic content --> code
+
+GET PUT POST DELETE
+
+Origin --> Content origin
+
+ALB --> Origin
+S3
+EC2
+
+Cache Behaviour
+
+dev.daws84s.site/static/images/product.png
+dev.daws84s.site/static/videos/demo.mp4
+
+/static/* --> Apply Cache
+/images/* --> Apply Cache
+/videos/* --> Apply Cache
+/* --> No Cache
+
+Where AWS Cache --> Cache is storage
+
+AWS Edge locations
+
+Invalidations
+==============
+Cache refresh
+
+/static/* --> invalidate
+
+https://cdn.daws84s.site
