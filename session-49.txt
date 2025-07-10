@@ -1,0 +1,75 @@
+How to create resources in multiple AWS accounts
+	dev, staging, uat, prod
+	
+one AWS account --> one provider --> .aws/credentials
+
+someone polluted the resource manually in AWS. How to manage this?
+
+terraform taint --> force AWS to recreate the resource
+
+infra is created manually, how can you manage that with terraform?
+
+terraform import
+
+.tf --> create infra in AWS --> .state
+
+infra is in AWS --> you need to get that into .tf files --> reverse engineering
+
+import
+========
+1. write provider
+2. write resource block with no arguments, then terraform init
+3. then terraform import
+4. terraform fetch all the data about resources into state file
+5. write tf files using state file
+
+You need to create parellel infra
+================================
+our URL --> ALB
+
+create similar infra parellelly
+
+create vpc
+create subnets, route tables, associations
+be careful data, if required use import --> only select query runs, no update, no create, no delete
+Bastion
+ALB --> diff arn -> diff DNS
+Autoscaling
+
+create another dummy hosted zone. create hdfcbank-automatic.com
+test the entire website with dummy domain
+
+dev.daws84s.site
+
+dev-tf.daws84s.site
+
+then announce downtime for 30min in midnight, then switch the ALB
+
+dev.daws84s.site --> new ALB DNS
+
+
+2 types of args
+1. mutable
+2. immutable
+
+default behaviour
+============
+1. destroy first
+2. replace next
+
+1. create another resource
+2. replace sg in instance with new sg
+3. then remove old sg
+
+Securing State
+=====================
+1. only terraform should create objects inside s3 bucket
+2. no one should have delete access
+3. a dedicate linux instance installed terraform should have role to create resources.
+4. s3 bucket should only allow instances with terraform role attached
+5. encyrpt state
+6. enable versioning
+7. users can have get state files access
+8. s3 cross region replication to update changes in another region bucket
+
+

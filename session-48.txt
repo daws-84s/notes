@@ -2,4 +2,3 @@ I have 2 accounts, one resource is in account-1
 another resource in account-2
 
 *.daws84s.site --> HTTPS records
-
