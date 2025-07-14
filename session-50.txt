@@ -1,0 +1,153 @@
+Java/J2EE
+1.5, 1.6, 1.8
+
+ear --> Enterprise archeive
+war --> Web archeive
+jar --> Java archeive
+
+.ear --> Frontend+Backend(Catalogue+User+Cart+Shipping+Payment)
+Oracle DB
+.ear = multiple wars + jar(libraries/dependencies)
+
+Websphere, Weblogic, JBOSS --> Application Servers
+
+Servlet(Base for any framework like spring) + JSP(Java server pages)
+
+100MB --> 120MB
+
+Release Process
+=================
+new features
+defects
+
+Business Analyst(Client side) + Business Analyst + Team Manager + Leads + Architects + Testing + Build and Release
+Release Manager --> Co ordinate with all teams to make sure release is going as per plan and continously update clients
+
+9-6PM
+Downtime
+Application serves stopping
+Build new application
+Remove old ear
+Place new ear
+Check Modules and versions
+Restart the server
+
+if Major defects rollback
+
+Slow, No response, etc.
+
+No restart
+
+Check logs
+Logs dump, traces
+Restart
+
+02:30AM application was slow, no response, logs are attached
+Not able to replicate issue
+
+Bridge --> Clients + L2 support + L1 support + Service Desk + Networking team + Linux team + DB team + testing team
+
+JQuery and AngularJS
+
+frontend -> backend
+API --> Rest API
+
+war file --> wildfly, jboss
+(Catalogue+User+Cart+Shipping+Payment) --> APP is down if any component is not working
+
+Microservices
+===============
+Catalogue --> 10MB
+User
+Cart
+Shipping
+Payment
+
+Every component can be developed in any programming language
+Loose coupling, less dependency
+
+Joint Families vs Small Families vs Individuals
+================================================
+
+15-20 members --> .ear file --> Physical Server --> Dedicated Host
+Big House
+
+Landed House
+=============
+
+advantages
+==========
+Privacy
+
+Disadvantages
+============
+Costly
+More time to construct
+Maintanace --> Electricity, Water, Security etc.
+
+Small Families
+==============
+4 members  --> VM --> Shared
+small flat --> 1bhk or 2bhk
+
+advantages
+==========
+less cost
+less time to construct
+no maintanance
+
+disadvantages
+============
+privacy
+
+Individuals --> Microservices
+==============
+hostels, pgs --> Containers
+
+advantages
+==========
+least cost
+less time
+no maintanance
+
+disadvantages
+==========
+0 privacy
+
+VM --> Logically divides physical hardware into multiple servers
+
+Router --> Embedded OS (10Mb)
+
+IP Enabled device --> OS(10Mb) + Hardware
+
+VM(flat) 				Containers(Bed)
+Costly					less cost
+more time(boot time)	less time(Boot time)
+more size				small size
+more resources			less resources
+block the resources		dynamic resources allocation
+Hypervisor				no need of extra components
+Not portable			Portable
+More secure				Less secure(We can acheive security)
+
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+add your normal user to docker group
+
+sudo usermod -aG docker ec2-user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
