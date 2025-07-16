@@ -1,0 +1,13 @@
+mongodb 7 version
+
+mongodb official image from hub
+
+Debain/ubuntu + nodejs
+
+docker have 2 types of network, bridge and host. host means directly host network. bridge means docker creates seperate network interface and assign the IP address to containers..
+
+docker default bridge network can't communicate between containers, docker always suggest to create custom brige network
+
+docker network create <name>
+
+docker run -d --name redis --network roboshop redis:7
