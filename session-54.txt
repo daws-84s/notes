@@ -1,0 +1,18 @@
+1. host
+2. bridge
+
+catalogue depends on mongodb
+cart depends on catalogue
+
+docker compose is a command line to manage multi container applications, we can define all the containers as services, create dependencies between them, start them at once, stop them at once..
+
+ansible -i catalogue.daws84s.site, -m dnf -a "name=nginx state=installed"
+
+docker run -d --name mongodb --network roboshop joindevops/mongodb:v1
+
+developer provides .sql files if there are any changes in DB structure, by mistake 2 developers created same sql files with different names, one sql file created the table and inserted the data, another sql file drop the table, recreated but didn't inserted the data. so we lost data in the DB. this happened in DEV environment. but it became a big issue and escalated..
+
+containers are ephemeral by default, if you remove them it will remove the data by default...
+
+use docker volumes
+
