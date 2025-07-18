@@ -1,0 +1,30 @@
+-v host-dir:container-dir
+/usr/share/nginx/html --> nginx html dir
+
+un-named/un-managed volumes
+if we create dir and manage it then those un-named/un-managed volumes
+if docker creates volumes and manages them then they are named/maanged volumes
+
+stateless vs stateful
+=====================
+WEB APP DB
+
+where data is important is called stateful applications...
+app code is stateless..
+
+volumes should be created to stateful apps. databases store the actual data is host directories, while rendering for user it will shows tables or collections
+
+use minimal images
+use official images
+run it as non root containers
+multi stage builds
+optimise docker layers
+
+multi stage builds are like keeping multiple Dockerfiles in a single Dockerfile, one Dockerfile we can use it as builder, another Dockerfile we can use it as final image, we can copy what we want from builder to final image. this reduces memory and then unnecessary installations
+
+ENV MONGO="true" \
+    REDIS_URL="redis://redis:6379" \
+    MONGO_URL="mongodb://mongodb:27017/users"
+	
+1. build image
+2. run image
