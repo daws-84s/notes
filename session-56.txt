@@ -1,0 +1,29 @@
+minimum and official images
+multi stage builds
+optimising layers, combining RUN instructions
+non root containers
+used customised networks
+implementing volumes
+COPY over ADD
+dockerignore not to load everything into docker
+
+implementing health checks
+limiting resources
+getting secrets from secrets manager
+implementing volumes
+
+
+Source code --> compile --> bytecode(intermediate code)
+
+JDK --> Java development kit(maven)
+JRE --> runs bytecode (no need of development env)
+
+system package --> OS package
+app dependency --> app library used by code
+
+/var/log/nginx
+/usr/share/nginx/html
+/etc/nginx
+
+pid
+cache
