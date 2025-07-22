@@ -1,0 +1,97 @@
+nodejs java --> libraries
+image = base os + system packages + app run time + app libraries
+
+1. build the image
+2. run/configure the image
+
+client --> docker CLI
+host --> where docker is running, docker deamon(continously running)
+repos --> local repo and central repo
+
+docker run nginx
+1. first it checks image is in local or not
+2. if exists, then it will run the container
+3. if not exists, pull from hub create container and send o/p to client
+4. there are docker volumes and networking we can configure
+
+1. host --> docker uses host networking
+2. bridge(default) -> docker has its own networking
+
+disadvantages
+===============
+1. auto scaling --> no default auto scaling methods
+2. load balancing --> no load balancing components to balance traffic b/w multiple containers
+3. reliability --> if container crashes, it will not restart on its own(self healing)
+4. what if docker host crashes?
+5. what about storage ? if docker host crashes we loose data also
+6. networking is only bridge mode, if you have multiple docker hosts bridge networking will not work
+
+container orchestrator
+=======================
+kubernetes from google
+docker swarm vs kubernetes
+
+autoscaling is easy, storage is outside of cluster, rollbacks and multiple deployment strategies are available in kubernetes. networking between containers is little easy in kubernetes
+
+pg owner --> 10 pgs
+
+1 pg building leaning
+
+
+
+work station
+============
+1. install docker
+2. run aws configure
+3. install eksctl for cluster creation
+4. install kubectl for cluster interaction
+
+22/07/25 02:34:30 ARCH=amd64
+   16  22/07/25 02:34:37 PLATFORM=$(uname -s)_$ARCH
+   17  22/07/25 02:34:44 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+   18  22/07/25 02:34:51 curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
+   19  22/07/25 02:34:55 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+   20  22/07/25 02:35:02 sudo install -m 0755 /tmp/eksctl /usr/local/bin && rm /tmp/eksctl
+   21  22/07/25 02:35:07 eksctl version
+   22  22/07/25 02:35:45 curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.33.0/2025-05-01/bin/linux/amd64/kubectl
+   23  22/07/25 02:36:01 chmod +x ./kubectl
+sudo mv kubectl /usr/local/bin/kubectl
+kubectl version
+
+
+spot instances
+===============
+on demand --> whenever you require you create instance, aws gaurentees you to get instance --> 1$/hour
+
+spot --> AWS data center have lot of resources
+I can give for less cost 70-90% discount --> 20cents/hour
+2min notice
+
+on demand --> AWS takes back spot instances if it needs capacity
+
+eksctl create cluster --config-file=eks.yaml
+
+kubectl get nodes --> shows the worker nodes
+everything is called as resource in kubernetes
+
+K8 --> PAAS
+
+namespace --> isolated project space in kubernetes where you can create your workloads
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+  lables:
+	project: roboshop
+	environment: dev
+
+
+kubectl apply -f <yaml>
+
+pod == container
+pod is the smallest deployable unit in kubernetes, one pod can have multiple containers
+
+docker run -d -p nginx:v1
+
+user, role, permissions
