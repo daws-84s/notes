@@ -1,0 +1,47 @@
+1. building the image
+2. running the image
+
+apiVersion: v1
+kind: 
+metadata:
+	name:
+	labels:
+spec:
+	containers:
+	- name:
+	  image:
+	- name:
+	  image:
+	  
+CrashLoopBackOff -> container is unable to start
+
+Container vs Pod
+pod is the smallest deployable unit in k8, a pod can have 1 or many containers. all containers inside pod share same network and storage.
+
+multi containers are useful in sidecar patterns and proxy patterns. proxy means first proxy container gets the request, it checks whether request should be forwarded to main container or not.
+
+catalogue, user, cart, shipping, payment, frontend can be in same pod as multiple containers but diff ports should be opened by containers..
+
+lables are used as selectors for other resources inside kuberentes... useful for filtering resources. lables values we can't keep long values, only 63char
+
+annotations are similar to labels, it is key value pair, but not used as selectors. annotations are used to provision external resources to kuberentes. we keep external information build url, image registry, etc...annotations values can be 256char
+
+resource limiting
+=================
+1 processor = 1000m, 250m = 0.25
+
+horizontal scaling vs vertical scaling
+
+1 house 20 year back --> 4
+
+1. you shouldn't stay in the house while remodelling
+2. your basement may not be strong to bear another 2 floors
+
+I may need atleast 20 env variables
+
+code and configuration. try to keep configuration always outside(loose coupling)
+
+we try to keep the configuration outside of pod definition. i.e configmap
+
+devops ---> daeavaoapas --> encoding
+devops --> fhasghauq9871345908752465fdhgfhghfh --> encryption
