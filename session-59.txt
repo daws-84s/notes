@@ -1,0 +1,37 @@
+Service Mesh
+===============
+pod to pod communication, IP address is not useful since it is ephemeral. We have services in kubernetes to acheive
+1. pod to pod communication
+2. load balancing
+
+1. clusterIP --> internal to the cluster
+2. nodePort --> it will open one port called nodePort in every node
+3. LoadBalancer --> it will create a loadbalancer and nodePort in all the nodes
+
+loadbalancer --> node on nodePort --> clusterIP --> pod
+
+clusterIP --> only internal service, means with in the cluster..
+
+How can I create multiple pods to same image?
+============================================
+nginx-c65pj == replicaset-name-<random 5 digit code>
+
+
+Deployment
+===========
+a version change is there
+v1, code changes --> v2
+1. delete v1 application
+2. download v2 application
+3. restart
+
+nginx:v1
+nginx:v2
+
+image: nginx:v2
+
+delete old pods
+create new pods with new image
+
+pod is a subset of replicaset
+replicaset is a subset of deployment
