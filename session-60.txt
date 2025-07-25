@@ -1,0 +1,24 @@
+1. build the image
+2. configure image
+
+namespace
+deployment, service
+
+kubens
+https://github.com/ahmetb/kubectx
+
+git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
+k9s
+curl -sS https://webinstall.dev/k9s | bash
+
+we can also use files as configmap and mount to pod
+
+EKS and Nodes
+
+we have access to only our namespace. Our team is managing 10 backend components in our project...
+
+20 cpu, 80GB ram
+35 nodes for different projects
+
