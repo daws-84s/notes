@@ -1,0 +1,84 @@
+On-premise
+===================
+Disk, NFS
+
+PV --> cluster
+PVC --> namespace level
+
+EKS admins control cluster level objects...
+
+as a roboshop devops engineer, you need a disk to be created for your application,
+
+we will raise a ticket for this. GB, filesystem type(ext4), etc..it is approved by roboshop team lead/delivery lead. Storage team also checks this and it is approved their team leader..
+
+then storage team creates the disk...
+
+provide these disk details to EKS admin, then they create PV for us and tell us the name.
+
+PV --> K8 resource, physical representation of the actual storage.
+PVC --> it is the claim done by pods to mount the storage
+SC --> k8 object used to create the volume dynamically...
+
+EBS static provisioning
+=======================
+1. Install EBS drivers
+2. Provide access to EC2 instance through role, EBSCSIDriverPolicy
+3. create volume in same az as in EC2 instance
+4. create PV, create PVC, create pod with nodeSelector option
+
+
+Kid --> Mother --> Father --> Wallet
+Pod -->	 PVC -->	PV 	  --> Storage
+
+Kid --> Mother --> UPI
+Pod --> PVC
+
+
+ElasticFileSharing(NFS)
+
+EFS static provisioning
+=======================
+1. Install drivers
+2. Give permissions to nodes, EFSCSIDriverPolicy
+3. create EFS volume
+4. Allow port no 2049 in EFS SG from EC2 SG
+5. Create PV, PVC and mount to pod
+kubectl kustomize \
+    "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/ecr/?ref=release-2.1" > private-ecr-driver.yaml
+	
+EBS vs EFS
+===========
+1. EFS can be anywhere in network, EBS should be in same AZ as in EC2
+2. EBS can be accessed only by one instance at a time, EFS can be accessed by multiple instances
+3. EBS is faster than EFS.
+4. EBS is mainly used for OS and DB, EFS is used to store objects and files.
+5. EBS size is fixed, EFS is elastic it automatically grows upto 48TB.
+6. EBS filesystem we can select ext4, EFS filesystem is already decided by AWS as NFS
+7. EBS will not have any SG attached, but EFS is in network, so there will be SG attached and 2049 should be allowed.
+
+1. EFS volume creation --> delete this next
+2. PV, PVC creation --> delete these first
+
+stateful applications --> DB
+
+Deployment --> stateless applications not for stateful applications
+Statefulset --> stateful applications.
+
+Deployment vs Statefulset
+==========================
+1. Deployment is for stateless applications, Statefulset is stateful applications
+2. PV and PVC is not mandatory for Deployment, but mandatory for stateful applications
+3. Statefulset need headless service... i.e no cluster IP
+4. Pods create in orderly manner in statefulset, Once first pod comes to running, then only other pod will create. While deletion reverse order follows
+5. Pod identities are preserved in statefulset, because if any pod crashes, statefulset create another pod with same name, so that communication is easy between pods..
+
+nslookup nginx-svc --> Cluster IP
+
+1. DB node is responsible to findout all the worker nodes and inform them about data changes
+
+headless service, it is a service without cluster IP
+nslookup nginx-headless-svc --> all the endpoint IP
+
+1. EBS dynamic provisioning
+
+
