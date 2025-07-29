@@ -22,3 +22,8 @@ we have access to only our namespace. Our team is managing 10 backend components
 20 cpu, 80GB ram
 35 nodes for different projects
 
+7 nodes
+node pool - 4
+28 total nodes
+
+namespace size

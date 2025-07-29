@@ -1,0 +1,87 @@
+Volumes
+==============
+data storage --> External HD, Google drives
+
+HD == EBS(Elastic block storage)
+====
+should be as near as possible to the system/server
+data transfer is very fast
+can store Operating systems
+well suitable for databases
+can be connected to only one device
+
+Drive == EFS(Elastic File system) == NFS
+=====
+can be anywhere in the internet
+can be used in multiple systems
+can't store OS and databases in drive
+can store files
+data transfer is slow compared to HD
+
+storage administration
+====================
+data backup
+data security
+data restore
+data replication
+
+PV, PVC and SC
+Persistant volume, persistant volume claim, storage class
+
+1. static provisioning --> need to create storage manually
+2. dynamic provisioning --> disk will be created automatically
+
+EBS static provisioning
+=======================
+1. need to create disk
+2. EBS disks should be in the same AZ of Ec2 instance
+3. Install drivers
+4. EC2 nodes should have permission to connect EBS disks.
+
+1a and 1c
+
+kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.43"
+
+PV
+====
+K8 resource, It is the physical representation of the volume...
+
+PVC
+====
+it is claiming resource of the storage i.e PV
+
+you can create labels to the nodes, use those labels as node selectors inside pod
+
+https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/
+
+ alpha.eksctl.io/cluster-name=roboshop,
+ alpha.eksctl.io/nodegroup-name=roboshop,
+ beta.kubernetes.io/arch=amd64,
+ beta.kubernetes.io/instance-type=c3.large,
+ beta.kubernetes.io/os=linux,
+ eks.amazonaws.com/capacityType=SPOT,eks.amazonaws.com/nodegroup-image=ami-00a3a30c95b4e2905,eks.amazonaws.com/nodegroup=roboshop,eks.amazonaws.com/sourceLaunchTemplateId=lt-0ccef079fe780a26e,eks.amazonaws.com/sourceLaunchTemplateVersion=1,failure-domain.beta.kubernetes.io/region=us-east-1,failure-domain.beta.kubernetes.io/zone=us-east-1c,k8s.io/cloud-provider-aws=d573a2d478e01899d878f9c9cc3fcc2a,kubernetes.io/arch=amd64,kubernetes.io/hostname=ip-192-168-10-214.ec2.internal,kubernetes.io/os=linux,node.kubernetes.io/instance-type=c3.large,topology.ebs.csi.aws.com/zone=us-east-1c,topology.k8s.aws/zone-id=use1-az6,topology.kubernetes.io/region=us-east-1,
+ topology.kubernetes.io/zone=us-east-1c
+ 
+
+EBS dynamic
+=============
+no need to create disk manually.
+StorageClass is the resource that creates the disk automatically
+
+EKS administrator creates SC resource, he will make it available for us. we use this SC to create disk and PV
+
+2
+
+dev and prod
+
+dev
+=====
+roboshop-dev
+roboshop-qa
+
+prod
+======
+roboshop
+
+cluster level -> admin activity
+namespace level --> EKS user activity
