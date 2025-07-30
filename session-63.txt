@@ -1,0 +1,79 @@
+1. volumes should be outside of cluster
+
+EBS or EFS static
+=================
+1. Install drivers
+2. Give permissions in EC2 role
+3. create volume
+4. create PV(physical representation of volume)
+5. create PVC
+6. volume mount to pod
+
+if EBS volume should be in the same az as in instance
+if EFS SG should allow port 2049
+
+EBS of EFS dynamic
+=================
+1. Install drivers
+2. Give permissions in EC2 role
+3. create storage class
+4. create PVC with SC name, volume and PV will be created automatically
+5. volume mount to pod
+
+in case of dynamic pod pvc creates volume, so it creates in the same az where ec2 instance is there
+if EFS SG should allow port 2049
+
+Deployment vs StatefulSet
+===========================
+1. Deployment is for stateless applications like frontend and backend
+2. StatefulSet is for DB related applications like MongoDB, MySQL, Redis, RabbitMQ, Prometheus, Grafana, ELK, etc.
+3. Deployment pods can share PV and PVC, but statefulset each pod creates its own volume.
+4. StatefulSet needs headless service i.e clusterIP none, because in DB environments pods should find other pods for data sync
+5. Deployment pods not follows orderly manner, statefulset pods follows orderly manner. it creates <statefulset-name>-0 <statefulset-name>-1....
+6. pods in statefulset keeps their identity
+
+why I took nginx as example in statefulset, even it is frontend server?
+
+simple example to show the data exists
+
+kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.43"
+
+MongoDB
+========
+
+
+horizontal autoscaling vs vertical autoscaling
+==============================================
+cpu utilisation
+
+1. make sure metrics server is running
+2. we should mention resources requests and limits
+
+current usage
+=============X100
+max usage limit
+
+
+taints and tolerations
+======================
+nodeSelector:
+	az: 1b
+	
+kubectl label nodes ip-192-168-19-250.ec2.internal disktype=ssd
+
+catalogue:v1 
+
+node pulled image catalogue:v1
+
+taint --> is like paint
+
+kubectl taint nodes ip-192-168-19-250.ec2.internal key1=value1:NoSchedule
+
+Scheduler --> Control plane component
+
+why taint?
+
+project specific hardware, seperate firewalls, performance reasons
+
+
+
