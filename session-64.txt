@@ -1,0 +1,51 @@
+Hostname
+Username
+password
+
+Deployment --> 10 pods
+2 new pods create
+2 new pods terminate
+
+1st request -> new pod
+2nd request --> old pod
+
+for few sec, your application is serving 2 versions
+
+taints and tolerations
+======================
+nodeSelector --> selects the node for us.. pod status is pending
+taints --> informing scheduler not to schedule pods onto this node.
+			PreferNoSchedule --> requesting scheduler not to schedule the pod. Scheduler still schedules the pod
+			NoSchedule --> ordering the scheduler not to schedule the pod
+			NoExecute --> NoSchedule + Evict the pods already running on that node
+
+1. Special Hardware for some special projects
+2. Networking requirements
+3. These nodes only may have DB connections
+4. High priority applications
+
+tolerations
+===========
+Solr pods responsible for search results
+
+
+Affinity and Anti-Affinity
+=========================
+Affinity = nodeSelector + more matching rules with operators like in, Exist, NotExist, gt, tlt etc
+
+requiredDuringSchedulingIgnoredDuringExecution(hard rule) --> pod status pending if node not matches
+preferredDuringSchedulingIgnoredDuringExecution(soft rule) --> if labels are not matched, then scheduler schedules on to some other node 
+
+kubectl label nodes ip-192-168-11-252.ec2.internal hardware=gpu
+
+affinity = like = attraction
+
+In --> matching the labels
+
+pod affinity
+=============
+pod-1 is in one node 11.252
+pod-2 likes pod-1 it wants to run in the same node as pod-1
+
+application --> DB
+application --> cache --> DB
