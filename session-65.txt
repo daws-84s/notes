@@ -1,0 +1,37 @@
+Helm Charts
+=============
+1. Build the image
+2. Run the image
+
+redis rabbitmq --> open source images
+
+opensource manifest files --> 
+
+1. install applications into kubernetes, it is like a package manager in kubernetes
+2. templatise kubernetes manifest files
+
+Chart.yaml
+===========
+{{ .Values.deployment.replicas }}
+
+helm install nginx . --> . represents current directory
+helm upgrade nginx . --> updates to latest version
+helm list --> list all helm apps running
+
+helm status nginx 
+
+1. add repo /etc/yum.repos.d/docker.repo
+
+dnf install docker -y
+
+add helm repo
+install the application charts
+
+1. install drivers
+2. add permissions to ec2 instance
+3. create storage class
+
+What is helm charts? why we use it?
+============================
+Helm is a package manager in kubernetes, we can install applications into kubernetes using helm. We can use helm to templatise kubernetes manifest files...
+
