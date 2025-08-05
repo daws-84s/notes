@@ -1,0 +1,42 @@
+1. package manager
+2. templatise manifest files
+
+Chart.yaml
+values.yaml
+templates
+
+helm upgrade --install <name> . --> expects Chart.yaml in current directory
+helm status <name>
+helm rollback <name> --> 1 revision back
+helm uninstall <name>
+
+helm repo add <URL>
+helm update
+helm install name <location
+
+Ingress Controller(AWS Application LoadBalancer)
+=====================
+ALB Listener --> Rule --> Target Group --> VM
+ALB Listener --> Rule --> Target Group --> Container/Pod
+
+low resources, fast provisioning, fast scaling
+
+Service: LoadBalancer --> Classic LoadBalancer (legacy). We can't extend this to multiple applications. It is not intelligent
+
+We prefer ALB, it is intelligent highly available and scalabe. It can read URL, headers, etc and forward the traffic to different targetgroups
+
+cart.daws84s.site --> forward to cart targetgroup
+
+m.facebook.com --> mobile
+
+icici.com
+netbanking.icici.com --> netbanking targetgroup
+corporatebanking.icici.com --> cb targetgroup
+
+IAM --> Roles, permissions, etc.
+K8 --> It is independent platform as a service. K8 has its own RBAC. Why should we integrate K8 RBAC and IAM. Because AWS services should have IAM permissions to create/manage other services. to create AWS services from K8 resources K8 SA should integrate with AWS IAM Role.
+
+Ingress controller --> Ingress
+
+
+
