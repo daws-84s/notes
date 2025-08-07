@@ -1,0 +1,68 @@
+RBAC
+=====
+Role based access control
+
+Authentication and Authorization
+
+Nouns --> names
+Verbs --> what action we do
+
+Services -> EC2, R53, VPC, etc
+Verbs --> createInstance, GetInstance, UpdateInstance, DeleteInstance
+
+createPod, ReadPod, UpdatePod, DeletePod
+
+Roles		Permissions
+
+Trainee		read all resources in roboshop
+Junior		create Pod
+Senior		Create Update
+Team Lead	Delete access
+
+Role and RoleBinding(Which role is binded to which user)
+
+IAM, RBAC in K8
+
+Suresh just joined team, he wants to access his namespace in EKS.
+
+1. create user in IAM
+2. He need to list his cluster. Create a policy to describe the cluster
+3. we need to integrate IAM user with K8 Role
+4. 
+
+aws sts get-caller-identity
+aws eks update-kubeconfig --region us-east-1 --name roboshop-dev
+
+service account
+===============
+It is non human user that pod uses to run. by default when we create namespace a serviceaccount with name is default is created
+
+1. Create OIDC provider
+
+REGION_CODE=us-east-1
+CLUSTER_NAME=roboshop-dev
+ACC_ID=315069654700
+
+eksctl utils associate-iam-oidc-provider \
+    --region $REGION_CODE \
+    --cluster $CLUSTER_NAME \
+    --approve
+2. Create policy and attach permissions
+
+arn:aws:iam::315069654700:policy/RoboShopMySQLSecretReader
+
+eksctl create iamserviceaccount \
+--cluster=$CLUSTER_NAME \
+--namespace=roboshop \
+--name=roboshop-mysql-secret-reader \
+--attach-policy-arn=arn:aws:iam::315069654700:policy/RoboShopMySQLSecretReader \
+--override-existing-serviceaccounts \
+--region $REGION_CODE \
+--approve
+
+this command creates IAM role and SA and integrates them
+
+pod
+1. with in the cluster
+2. outside of the cluster... secretmanager IAM Role and Policy
+SA --> Role and Policy attach
