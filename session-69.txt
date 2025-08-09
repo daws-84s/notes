@@ -1,0 +1,30 @@
+SA
+====
+-> Access the internal workloads by communication k8 API. SA can have role and rolebinding
+-> SA can fetch secrets, create ALB, any AWS service based on the role attached
+
+1. Make sure OIDC provider exists, creates trust and federation between IAM and others
+2. Create a policy
+
+3. We can create IAM Role and attach policy.
+4. We can create SA and give IAM role in annotation
+or
+Create SA and role through eksctl command
+
+5. Provide sa in the pod spec.
+
+fetch secrets
+==============
+follow above steps
+
+1. Make sure secrets exists and SA have access through role and policy
+2. Create initcontainer that fetch the secret and write to the volume. init container should have volume mounts to persist.
+3. emptyDir is required to share the storage between containers in pod.
+4. mount the same volume to the main container and access it..
+5. before running command in container we need to read the secret and make it as env variable
+6. now we can delete the file and start the container
+
+
+1. You create LB from K8
+2. You create LB outside of K8 and provide the info to K8
+

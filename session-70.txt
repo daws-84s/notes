@@ -1,0 +1,54 @@
+Minimum Downtime or Zero Downtime
+==================================
+Announce Downtime while platform upgrade. Take 3hours downtime. Make sure changes in firewalls so that other teams can't connect to cluster. We make sure no changes to apps happen while upgrade is going on.
+
+
+1. EKS control plane and NG is fully functional.
+2. Create one NG blue/green with same capacity. Taint the nodes
+3. Upgrade controlplane to 1.33
+4. New NG also should be upgraded to same 1.33. Old node group is still in 1.32
+5. Cordon old nodes. Untaint new NG
+6. Start draining the nodes. Workloads shift to new NG
+7. Delete old NG, and manually edit the controlplane to 1.33
+8. Create firewalls back and announce upgrade is completed. Ask app team to check their applications.
+
+Blue Green
+==========
+zero downtime deployment strategy, where we create the same capacity of infra if blue is running version we create green and vice versa, test it and switch the workloads to new infra, delete old infra
+
+Rolling Update
+===========
+4 pods
+
+2min
+create 5th pod with new version
+delete one old old
+3 old 1 new
+
+creaet 6th pod with new version
+delete 2nd old pod
+2 old 2 new
+
+creaet 7th pod with new version
+delete 3nd old pod
+1 old 3 new
+
+creaet 8th pod with new version
+delete 4th old pod
+0 old 4 new
+
+at the same time users may see 2 diff versions, but code should handle this
+
+Blue Green
+===========
+LB -> Listener -> Rule -> TG -> VM
+
+present blue TG is running
+create new Green TG, add the nodes to this
+
+Create new internal LB, attach Listener, Rule and new TG
+Test the application with internal URL.
+
+Edit Main LB rule to send traffic to new TG
+
+We can remove old TG, but let's keep it as backup/rollback.

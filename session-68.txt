@@ -1,0 +1,28 @@
+ServiceAccount
+================
+non human rbac resource attached to pod access kube-api server and external resources provisioning like load balancer, accessing secrets, etc..
+
+when we create a namespace kubernetes will create default sa. by default all pods run with default sa...
+
+default sa will not have any permissions..
+
+1. create OIDC provider
+REGION_CODE=us-east-1
+CLUSTER_NAME=roboshop-dev
+ACC_ID=315069654700
+
+eksctl utils associate-iam-oidc-provider \
+    --region $REGION_CODE \
+    --cluster $CLUSTER_NAME \
+    --approve
+2. create IAM Policy to access secret manager
+3. create K8 service account, IAM Role and attach policy to the role using eksctl command
+
+eksctl create iamserviceaccount \
+--cluster=$CLUSTER_NAME \
+--namespace=roboshop \
+--name=roboshop-mysql-secret-reader \
+--attach-policy-arn=arn:aws:iam::315069654700:policy/RoboShopMySQLSecretReader \
+--override-existing-serviceaccounts \
+--region $REGION_CODE \
+--approve
