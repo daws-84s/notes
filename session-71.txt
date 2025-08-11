@@ -1,0 +1,63 @@
+it is zero downtime strategy, for example if the current running version is blue, we will create green version with similar capacity and we will do health check. then we switch the routing from blue to green if everything is good. blue can be still backup version to rollback if we get any issues in green.
+
+we are using this in our eks upgrade. where blue is the running node group, we create green node group. upgrade control plane and green node group switch the workloads from blue to green.
+
+
+purpose: service-demo
+project: roboshop
+environment: dev
+color: blue
+
+ephemeral volumes:
+- emptyDir
+- hostPath --> don't use this, use only for daemonset
+
+ReplicaSet
+Deployment
+StatefulSet
+DaemonSet
+	DaemonSet make sure a replica runs on each and every node, this is mostly useful to collect the host logs and we can send them external log storage.
+	
+liveness probe -> a person is alive or not. just heart beat. if not alive k8 attempts restart
+readiness probe -> when he is ready to work. is pod ready to accept the traffic. then end point gets registered with service
+
+k8 uses liveness probe and rediness probe for self healing.
+
+catalogue -> mongodb
+
+/health --> 200 then it is live
+success code but mongodb false, then it is not ready
+
+NetworkPolicy
+
+frontend -> catalogue -> mongodb
+
+mongodb_catalogue
+
+k8 architecture
+--------------------
+master and nodes
+
+master
+===========
+api server --> all  cluster interactions comes to api server. validates RBAC and provide the response. if you are creating pods, api server validates and handover to scheduler.
+
+scheduler --> it a component to decide where your pod should run. it checks for taints and tolerations, selectors like nodeaffinity, pod affinity, node readiness,etc.
+
+control manager
+replica controller -> make sures desired number of pod replicas run all the time.
+node controller --> checks desired number of nodes are running
+ServiceAccount controller --> Create default ServiceAccounts for new namespaces.
+EndpointSlice controller -> Populates EndpointSlice objects (to provide a link between Services and Pods).
+
+etcd --> key value storage for k8 cluster. all k8 configs are here
+
+Node components
+=============
+kubelet --> agent running in every node. connects the nodes and master and makes sure containers are running inside pod.
+kube-proxy --> networking rules how to send traffic to pods
+Container runtime --> containerd, runc, etc. runs the containers
+
+
+add-ons: adds capabilities to the cluster. vpc-cni, dns, metric server, etc.
+
