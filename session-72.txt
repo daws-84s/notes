@@ -1,0 +1,77 @@
+Git
+=====
+create repo
+create some files and folders inside repo
+add to staging area
+commit to local repo
+push to central repo
+
+clone the repo
+pull the changes
+
+
+git init --> intialise the folder as git repo --> creates .git in a folder
+.git --> if your folder have this, then we call it as repo
+
+git branch -M main
+git remote add origin <remote-URL>
+
+branches
+Pull Request
+Merge
+Rebase
+How to resolve conflicts
+Branching strategy
+
+kempa cola
+==========
+formula --> create drink
+taste themself --> feedback
+next employees --> feedback
+next investors --> feedback
+next small group of public --> feedback
+
+FASAI certification and then release to public
+
+PROD --> main/master branch
+
+create new branch
+DEV QA UAT SIT PERF PRE-PROD PROD 
+DEV PROD
+
+build and deploy in DEV
+Run the test cases
+Move to QA/UAT/SIT
+Run the test cases
+
+Then take the approval from CR process
+Then deploy to PROD
+
+git checkout -b <new-banch-name>
+
+raise PR to bring changes to main branch
+
+How you bring changes to main branch?
+
+1. Merge
+2. Rebase
+
+1. Pull before you push
+2. Pull before you create new branch
+
+Merge vs Rebase
+===============
+1. Merge creates extra commit called merge commit, Rebase does not create extra commit
+2. Merge preserves the history, Rebase does not preserve the history.
+3. Rebase rewrites the history, it will change commit id.
+4. Rebase has linear history. Merge circular history
+
+if a branch is shared among multiple members, if you want to preserve the history go for merge. Long releases waterfall model
+
+if it is agile or microservices develoment, usually a branch is owned by single person. then go for rebase..
+
+How do we get conflicts? How to resolve them?
+
+When git sees different content in the same line, it can't decide which one to keep which one to remove. So it highlights that as conflict.
+
+Those who caused conflicts means who developed these 2 should sit togetther and resolve the conflicts..
