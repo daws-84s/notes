@@ -39,4 +39,3 @@ K8 --> It is independent platform as a service. K8 has its own RBAC. Why should 
 Ingress controller --> Ingress
 
 
-

@@ -66,3 +66,34 @@ pod
 1. with in the cluster
 2. outside of the cluster... secretmanager IAM Role and Policy
 SA --> Role and Policy attach
+
+aws secretsmanager get-secret-value --secret-id roboshop/mysql/password
+
+1. get the secret values from secretsmanager
+2. create a env variable with this value and key as MYSQL_ROOT_PASSWORD
+
+InitContainers
+===============
+init containers before main containers run in kubernetes. they make sure all the dependencies are setup like fetching secrets, make sure other services are running, etc..
+
+Init containers always run to completion
+Each init container must complete successfully before the next one starts.
+
+How you make the secret avaialable to main container...
+
+init container fetch secret and store it inside file. main container can get read the file and set it as env variable...
+
+pods by default uses node storage. if pod gets deleted, this storage also will be deleted. so storage lies until pod lives. these are ephemeral volumes...
+
+then we need to use volumes...
+
+1. empheral volumes --> temp storage required by pod
+	* emptyDir --> if you want to share storage to all the containers inside pod, we can go for emptyDir
+	* hostPath
+2. external volumes --> by default we made is retain
+
+mysql image
+
+FROM mysql:8.0
+COPY *.sql /init.d/
+

@@ -61,3 +61,8 @@ Container runtime --> containerd, runc, etc. runs the containers
 
 add-ons: adds capabilities to the cluster. vpc-cni, dns, metric server, etc.
 
+cart -> catalogue
+
+cart -> catalogue:8080
+
+http:://catalogue-preview:8080/health --> success
