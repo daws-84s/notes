@@ -1,0 +1,50 @@
+git reset
+git revert
+git squash
+git stash
+git cherry-pick
+
+git reset/revert -> undo the changes you already commited
+
+reset --> undo the changes before you commit to remote
+
+soft mixed hard
+
+soft --> when you do soft reset, you get the changes into staging area
+mixed (default) --> deletes from local commit, staging area and keep it in workspace
+hard --> deletes from local commit, staging, working area
+
+if changes are already into remote branches
+
+revert the changes --> but it will not delete anything, it will add the changes as new commit on top reverted commit
+
+1 feature -> 1 commit
+
+if a single person on one branch, you can squash the multiple commits into single commit.
+git squash == git rebase -i
+not recommended to do in shared branches
+
+git stash
+=========
+when you are working on something in new feature branch, you got an emergency defect. We need to create hotfix branch immidiately and do the changes
+git stash --> save the changes into some temp without commiting
+git stash pop --> get the changes from temp area to workspace
+
+git cherry-pick
+==============
+I am developing feature, but I found some parts of the feature already developed in another branch,
+
+Continous Integration
+=====================
+What is CI --> It is the process integrating the code into artifact/image continously, means when developer do some commit, we can clone the code, install the dependencies, we can build the code, we can scan the code, we can unit testing finally we will build it as image
+
+Jenkins is popular CI tool. The real power jenkins lies in plugins.
+
+sudo curl -o /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+# Add required dependencies for the jenkins package
+sudo yum install fontconfig java-21-openjdk jenkins -y
+sudo systemctl daemon-reload
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
