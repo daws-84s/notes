@@ -1,0 +1,34 @@
+Clone
+Reading version
+Install dependencies
+
+docker build -t URL/catalogue:appVersion
+
+jenkins pipeline --> AWS credentials
+
+testing
+==========
+unit testing --> this should be done by developer
+
+functions are basic blocks of the programming
+
+login(username, password){
+	
+}
+
+functional testing --> DEV
+=================
+either developers/testers
+
+login(username, password){
+	connectSQL()
+	checkUserName()
+	checkPassword()
+}
+
+integration testing --> SIT/UAT/QA
+================
+testing team writes integration test cases
+catalogue cart
+cart is calling catalogue
+

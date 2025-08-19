@@ -13,7 +13,7 @@ freestyle pipelines --> create the pipeline in UI with some clicks.
 5. time consuming
 
 Pre-Build 		Build 		Post-Build
-Pre production production Post production 
+Pre production production Post production    
 
 Pre-Build -> Options, environment, where to run
 Build --> Actual pipeline
