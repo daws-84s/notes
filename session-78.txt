@@ -1,0 +1,26 @@
+1. allow traffic from agent to eks master
+2. create namespace
+
+check rollout status, keep it in variable, write a condition using variable
+
+1. first time failure, helm can't rollback because there will be no 0 version
+2. 2nd deployment also failure, helm rollback attempts, rollback also will be failure. deployment failed and rollback failed
+3. 3rd deployment success, deployment is success
+4. 4th revision, failure. rollback is success, deployment is failure
+
+scans
+=======
+shift left --> bringing the testing and scanning to the early stages like DEV environment is shift left instead of doing in higher environments
+
+build once in DEV and run anywhere --> We only build the application in DEV environment, we dont build in multiple environments, we promote the application to multiple environments with different configuration
+
+static source code analysis --> sonarqube
+static application secuirty testing --> sonarqube, fortify scan, github
+open source library scan --> nexus iq, github dependabot
+dynamic application secuirty testing --> attacks on running application.. fortify webinspect, veracode --> Limited freetrail
+docker image scan --> vulnerabilities in the images
+
+
+
+
+
