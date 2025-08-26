@@ -1,0 +1,45 @@
+Issues -->
+Bugs --> 
+Maintainability Rating -> 
+Code Coverage ->
+
+SAST
+=====
+Vulnerabilities
+Code Smells
+Security Rating
+
+C1, C2
+new code = C2-C1
+Overall code = C1+C2
+
+Overall code --> 100% --> 10000 lines
+New code --> 0% -> 100 lines
+
+Code Coverage -> 90%
+
+1. Enable SonarScanner and Server in Jenkins.
+2. Ask developers to onboard into sonarqube server.
+3. We gave them 3 months time to clear all the backlog issues, bugs, vulnerabilities, code smells, mantaintability rating, security rating on overall code and new code.
+1st week --> issues
+2nd week --> vulnerabilities
+3rd week --> bugs
+4th week --> mantaintability rating
+
+4. We enabled quality gates and enabled in the pipeline too using webhook but initally not aborting pipeline.
+5. After 2 weeks we started aborting pipeline if quality gates.
+
+
+Open source library scan
+=========================
+Nexus IQ --> enterprise level scanning tool. We recently decommissioned this and started using github dependabot
+
+We enabled dependabot in all our repos, we are checking the dependabot alerts in our pipeline, if we see high and critical alerts we are failing the pipeline...
+
+curl -s -H \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: token <token>" \
+  https://api.github.com/repos/daws-84s/catalogue/dependabot/alerts/
+  
+  
+curl -s -H "Accept: application/vnd.github+json" -H "Authorization: token <token>" https://api.github.com/repos/daws-84s/catalogue/dependabot/alerts

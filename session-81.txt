@@ -1,0 +1,60 @@
+Static source code analysis
+Open source vulnerability scanning
+Dynamic application security testing
+Static application security testing
+Image scanning
+
+Shift left
+
+Catalogue -> developer
+Jenkinsfile -> DevOps Engineer
+
+DRY -> Don't repeat yourself
+Ansible Roles, Terraform modules, Shell common functions
+
+Too many components
+===================
+each component will have devops engineer
+they create their own pipelines
+
+
+Programming Language		Deployment Platform
+====================		===================
+Java							EKS
+Java							VM
+Java							PCF
+
+groovy is java syntax, but we can use shell script
+
+hello-world-nodejs
+
+developers --> feature branch --> main
+
+multi branch pipelines
+
+QA, SIT, UAT, PROD
+
+build once and run anywhere --> build in DEV environment, promoting that build to all other environments with diff configuration
+
+https://catalogue-dev.daws84s.site/api/catalogue/robo-123/id
+
+CR process
+============
+change release process
+
+DEV, QA/SIT/UAT/PERF/PRE-PROD, PROD
+
+jira, change management tool
+
+ticket cr-1234
+================
+project
+component
+date and time
+rollback
+change description
+team lead - 1st level
+team manager - 2nd level
+testing manager - 3rd level
+client - 4th level
+dependencies of this application

@@ -1,0 +1,76 @@
+aws ecr wait image-scan-complete \
+    --repository-name roboshop/user \
+    --image-id imageTag=${appVersion} \
+	--region ${REGION} \
+	
+Jenkins -> CICD
+Helm
+
+ArgoCD is a deployment tool to deploy applications into kubernetes as well as to manage the cluster
+
+1. Maintan/manage the cluster
+2. Deploy/manage applications
+
+GitOps
+=========
+Git as a single source of truth
+Everything should be inside git
+Instead of some need to apply or issues the command, gitops means if something is changed in git repos, it should automatically sync
+
+If we change the image from 1.0.0 in helm values.yaml to 1.0.1 instead we issue helm command, argocd will be looking this git repo and get the changes automatically
+
+
+Advantages
+============
+1. no need to install extra tools inside jenkins like kubectl
+2. no need to provide authenticatioin to jenkins about eks
+3. gitops -> git as a single source of truth, we no need to apply the changes manually it will automatically sync
+4. revert to the old version in values.yaml then it will restore authentically or raise a PR and change to previous image
+5. clean UI
+6. ArgoCD is used for cluster management also
+
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+
+
+curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+rm argocd-linux-amd64
+
+
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+
+argocd admin initial-password -n argocd
+
+Administration
+=================
+namespaces
+storageclasses
+network policies
+ingress controller drivers
+ebs drivers
+efs drivers
+pv
+
+everything in argocd is called as application.
+
+1. source
+2. destination
+
+group of groups in ansible
+
+[web]
+frontend.daws84s.site
+
+[user]
+user.daws84s.site
+
+
+[roboshop:children]
+web
+user
+
+EKS Admins
+=============
