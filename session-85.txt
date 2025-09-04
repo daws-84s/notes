@@ -1,0 +1,60 @@
+Prometheus ec2 sd_config
+========================
+tags -> region, Monitoring: true
+
+IAM Role -> DescribeInstances
+
+Rules
+=======
+up < 1
+
+Rule evaluation -> Create Alert -> Manage the alert -> Email the alert
+
+gngvkyfjuygqsqhw
+
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-bundle.crt
+logfile        /var/log/msmtp.log
+
+account        gmail
+host           smtp.gmail.com
+port           587
+from           m.sivakmrreddy@gmail.com
+user           m.sivakmrreddy@gmail.com
+password       gngvkyfjuygqsqhw
+
+account default : gmail
+
+
+{
+echo "To: info@joindevops.com"
+echo "Subject: Prometheus Mail testing alert"
+echo "Content-Type: text/html"
+echo ""
+echo "Prometheus Mail testing alert"
+} | msmtp "info@joindevops.com"
+
+jenkins-shared-library-deployment
+
+k8Deployment.groovy
+
+ROBOSHOP/deployment
+
+a normal pipeline component name, image, project code
+
+terraform -> provider.exe -> AWS
+python -> boto3 botocore -> AWS
+
+8PM stop all EC2 8AM start all EC2
+FRI 8PM MON 8AM
+
+cost-optimisation true
+
+event bridge
+stopInstance 8PM
+startInstance 8AM
+
+
+

@@ -1,0 +1,39 @@
+Black Box Monitoring -> as an end user
+White Box Monitoring -> inside the system. checking logs, metrics, etc..
+
+RCA Analysis
+=============
+P0, P1, P2, P3, P4, etc.
+
+Every alert is an incident. 
+
+Why that incident came?
+Why we were not able to prevent anticipate it?
+What is the effect? 
+How we cleared?
+How can we make sure it will not occur again?
+Lessons learnt?
+
+4 Golden Signals
+=================
+Latency -> How soon our system is responding, low latency
+Traffic --> How many requests per min, per hour
+Errors -> 500 400 errors
+Saturation -> resources like CPU, memory, Disk, Network, etc.
+
+Prometheus -> TSD server
+
+TSD -> 
+
+capture the metric value against time...
+
+wget https://github.com/prometheus/prometheus/releases/download/v3.6.0-rc.0/prometheus-3.6.0-rc.0.linux-amd64.tar.gz
+
+CC Camera
+============
+Central Server --> CC Cameras
+
+
+https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
+
+Prometheus should connect to configured exporter and pull the metrics...
